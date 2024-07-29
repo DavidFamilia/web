@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../ITESIL/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <title>Instituto Tecnológico San Ignacio de Loyola</title>
+    <style>
+        /* Estilos para la sección de carreras */
+        .seccion-carrera {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            font-family: Arial, sans-serif;
+        }
+
+        .contenido-principal {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .texto-carrera {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .texto-carrera h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .texto-carrera p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #666;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .slider-container {
+            flex: 2;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #imagen-principal {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .controles-slider {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .preview-control {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 0.25rem;
+            width: 60px;
+        }
+
+        .preview-control img {
+            width: 100%;
+            height: 45px;
+            object-fit: cover;
+            border-radius: 4px;
+            cursor: pointer;
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+        }
+
+        .preview-control img.activa {
+            opacity: 1;
+            border: 2px solid #3b82f6;
+        }
+
+        .barra {
+            width: 100%;
+            height: 4px;
+            background-color: #d1d5db;
+            border-radius: 0 0 4px 4px;
+            overflow: hidden;
+            margin-top: 4px;
+        }
+
+        .barra .progreso {
+            width: 0;
+            height: 100%;
+            background-color: #3b82f6;
+            transition: width 0.1s linear;
+        }
+
+        .barra.activa .progreso {
+            animation: progresoAnimacion 5s linear;
+        }
+
+        @keyframes progresoAnimacion {
+            0% { width: 0; }
+            100% { width: 100%; }
+        }
+
+        .fade-out {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+
+        .fade-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-out {
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+
+        .slide-in {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        @media (max-width: 768px) {
+            .contenido-principal {
+                flex-direction: column;
+            }
+
+            .texto-carrera {
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+
+</head>
+<body>
+    
+    <!-- ================================================== -->
+    <!--                      Navbar                        -->
+    <!-- ================================================== -->
+
+    <header class="header">
+        <nav class="menu">
+            <a href="#" class="logo">ITESIL</a>
+            <input type="checkbox" id="menu-toggle">
+            <label for="menu-toggle" class="menu-icon">
+                <i class="fa fa-bars"></i>
+            </label>
+            <ul class="navbar">
+                <li><a href="../Pag Final/index.html">Inicio</a></li>
+                <li><a href="../Pag Final/pag/Sobre_Nosotros.html">Sobre Nosotros</a></li>
+                <li><a href="../Pag Final/pag/Academico.html">Académicos</a></li>
+                <li><a href="../Pag Final/pag/Aula_virtual.html">Aula Virtual</a></li>
+                <li><a href="../Pag Final/pag/Novedades.html">Novedades</a></li>
+                <li><a href="../Pag Final/pag/Contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- ================================================== -->
+        <!--                  header content                    -->
+        <!-- ================================================== -->
+
+        <section class="hero">
+            <div class="hero-content container">
+                <h1>Instituto Tecnológico San Ignacio de Loyola</h1>
+                <p>78 años formando hombres y mujeres al servicio de los demás.</p>
+                <a href="../ITESIL/pag/Aula_virtual.html" class="btn-1">Aula virtual</a>
+            </div>
+        </section>
+
+        <!-- ================================================== -->
+        <!--                     Carreras                       -->
+        <!-- ================================================== -->
+
+        <!-- Sección de Carreras -->
+        <section class="seccion-carrera">
+            <h2 class="seccion-titulo">Oferta Académica</h2>
+            <div class="contenido-principal">
+                <div class="texto-carrera">
+                    <h1 id="nombre-carrera">Desarrollo y Administración de Aplicaciones
+                        informáticas
+                    </h1>
+                    <p id="definicion-carrera">Analizar, diseñar, desarrollar, administrar e implementar aplicaciones informáticas, sistemas de bases de
+                        datos, aplicaciones web y recursos de sistemas de información, a fin de apoyar las funciones productivas
+                        de las organizaciones.</p>
+                </div>
+                <div class="slider-container">
+                    <img src="../web/img/carreras/Indormatica.webp" alt="Imagen de la carrera" id="imagen-principal">
+                </div>
+            </div>
+            <div class="controles-slider">
+                <div class="preview-control">
+                    <img src="../web/img/carreras/Indormatica.webp" alt="Informática" class="activa" data-nombre="Desarrollo y Administración de Aplicaciones
+                    Informática" data-definicion="Analizar, diseñar, desarrollar, administrar e implementar aplicaciones informáticas, sistemas de bases de datos, aplicaciones web y recursos de sistemas de información, a fin de apoyar las funciones productivas de las organizaciones.">
+                    <div class="barra activa">
+                        <div class="progreso"></div>
+                    </div>
+                </div>
+
+                <div class="preview-control">
+                    <img src="../web/img/carreras/Enfermería.webp" alt="Enfermería" data-nombre="Cuidados de Enfermería y Promoción de la Salud" data-definicion="Proporcionar cuidados y atención integral de salud al usuario o usuaria, promover la salud y prevenir
+                    enfermedades en las personas y en la comunidad, mediante actuaciones que produzcan cambios en los estilos de vida y en las condiciones del entorno, para facilitar el desarrollo de una cultura de la salud, cumpliendo con los criterios de calidad, seguridad y optimización de recursos, bajo la supervisión de profesional médico.">
+                    <div class="barra">
+                        <div class="progreso"></div>
+                    </div>
+                </div>
+
+                <div class="preview-control">
+                    <img src="../web/img/carreras/Electricidad.webp" alt="Electricidad" data-nombre="Instalaciones Eléctricas" data-definicion="Representar, montar y mantener instalaciones de redes eléctricas, máquinas eléctricas, cumpliendo los criterios de calidad en condiciones de seguridad y según la normativa eléctrica vigente.">
+                    <div class="barra">
+                        <div class="progreso"></div>
+                    </div>
+                </div>
+
+                <div class="preview-control">
+                    <img src="../web/img/carreras/Ebanisteria.webp" alt="Ebanisteria" data-nombre="Muebles y Estructuras de Madera" data-definicion="Planificar, organizar y controlar la producción e instalación de mobiliario y elementos de carpintería, asegurando su viabilidad en función de los recursos disponibles para satisfacer las necesidades del cliente, atendiendo a criterios de prevención de riesgos laborales, protección del medioambiente y bajo las especificaciones técnicas establecidas.">
+                    <div class="barra">
+                        <div class="progreso"></div>
+                    </div>
+                </div>
+
+                <div class="preview-control">
+                    <img src="../web/img/carreras/Mecánica.webp" alt="Mecánica" data-nombre="Mecanizado" data-definicion="Realizar las distintas operaciones que intervienen en el proceso de mecanización con máquinas herramientas convencionales, especializadas y de Control Numérico Computarizado (CNC), utilizando la programación manual —avanzada o asistida—, así como la preparación de máquinas convencionales y de otras de complejidad superior; controlando la calidad de los productos obtenidos, el funcionamiento, puesta en marcha y parada de los equipos; responsabilizándose del mantenimiento de primer nivel de las máquinas y equipos; obteniendo la producción en condiciones de autonomía, calidad, seguridad y plazo requeridos; y cumpliendo las normas de prevención de riesgos profesionales y medioambientales en vigor.">
+                    <div class="barra">
+                        <div class="progreso"></div>
+                    </div>
+                </div>
+
+                <div class="preview-control">
+                    <img src="../web/img/carreras/Agronomía.webp" alt="Agronomía" data-nombre="Agropecuaria" data-definicion="Organizar y ejecutar las operaciones de producción agropecuaria, atendiendo a criterios de calidad y rentabilidad, realizando operaciones de producción y de mantenimiento de instalaciones y equipos, aplicando la legislación de protección ambiental, de prevención de riesgos laborales, de bienestar animal y de seguridad e inocuidad alimentaria.">
+                    <div class="barra">
+                        <div class="progreso"></div>
+                    </div>
+                </div>
+
+                <div class="preview-control">
+                    <img src="../web/img/carreras/Asistencia_Veterinaria.webp" alt="Asistencia Veterinaria" data-nombre="Asistencia a Veterinaria" data-definicion="Prestar servicios auxiliares de veterinaria en la atención clínica de animales en consulta, quirófano, hospitalización, radiodiagnóstico y laboratorio de análisis, así como asistencia en los sistemas de producción pecuaria, cumpliendo criterios de bienestar animal, prevención de riesgos laborales, protección del medioambiente y normas técnico-sanitarias de calidad y de seguridad e higiene, bajo la supervisión del facultativo o facultativa.">
+                    <div class="barra">
+                        <div class="progreso"></div>
+                    </div>
+                </div>
+
+                <div class="preview-control">
+                    <img src="../web/img/carreras/Refrigeración.webp" alt="Refrigeración" data-nombre="Refrigeración y Acondicionamiento de Aire" data-definicion="Realizar la instalación, reparación y mantenimiento de los equipos e instalaciones de refrigeración y acondicionamiento de aire de uso doméstico, comercial e industrial, de baja, alta y muy alta presión, aplicando la normativa vigente y los protocolos de calidad, de seguridad y prevención de riesgos laborales establecidos.">
+                    <div class="barra">
+                        <div class="progreso"></div>
+                    </div>
+                </div>
+
+                <div class="preview-control">
+                    <img src="../web/img/carreras/Alimentos.webp" alt="Industrias Alimentarias" data-nombre="Industrias Alimentarias" data-definicion="Supervisar, organizar, realizar y controlar operaciones de elaboración, envasado y embalaje de alimentos, cumpliendo con las buenas prácticas de manufactura, de seguridad laboral y protección ambiental.">
+                    <div class="barra">
+                        <div class="progreso"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================== -->
+        <!--                      video                         -->
+        <!-- ================================================== -->
+
+        <section class="container-v">
+            <div class="video-container">
+                <video autoplay loop muted playsinline>
+                    <source src="../ITESIL/video/Carreras.mp4" type="video/mp4">
+                    Tu navegador no soporta el elemento de video
+                </video>
+            </div>
+            <div class="text-container">
+                <h2>¿Quiénes somos?</h2>
+                <p>El Instituto Tecnológico San Ignacio de Loyola (ITESIL) es una institución educativa estatal confiada a la Compañía de Jesús bajo la modalidad técnico – profesional, ubicada en el municipio de Dajabón, provincia Dajabón, República Dominicana.</p><br>
+                <p>Oficialmente fue fundado el día 10 de marzo de 1946, por iniciativa del Padre Antonio López de Santa Anna, SJ., con el nombre de Colegio Agrícola San Ignacio de Loyola, bajo la dirección de los Hermanos Cruzados de San Juan Evangelista.</p>
+            </div>
+        </section>
+        
+        <!-- ================================================== -->
+        <!--                     Gráficos                       -->
+        <!-- ================================================== -->
+
+        <section class="section graficos-container">
+            <div class="grafico-content">
+                <h2 class="grafico-titulo">Población Total de Estudiantes</h2>
+                <div class="chart-container">
+                    <canvas id="genderChart"></canvas>
+                </div>
+            </div>
+            <div class="grafico-content">
+                <div class="chart-container">
+                    <canvas id="careerChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================== -->
+        <!--                   Actualidades                     -->
+        <!-- ================================================== -->
+
+        <section class="actualidades">
+            <div class="container">
+                <h2 class="section-title">Actualidades</h2>
+                <div class="noticias-grid">
+                    <article class="noticia-card">
+                        <div class="noticia-imagen-container">
+                            <img src="../ITESIL/img/carreras/Agronomía.webp" alt="Título de la noticia 1" class="noticia-imagen">
+                        </div>
+                        <div class="noticia-content">
+                            <h3 class="noticia-titulo">Título de la noticia 1</h3>
+                            <p class="noticia-resumen">Breve resumen de la noticia 1. Este es un párrafo corto que describe los puntos principales de la noticia.</p>
+                            <a href="#" class="btn-ver-mas">Ver más</a>
+                        </div>
+                    </article>
+                    
+                    <article class="noticia-card">
+                        <div class="noticia-imagen-container">
+                            <img src="../ITESIL/img/carreras/Agronomía.webp" alt="Título de la noticia 1" class="noticia-imagen">
+                        </div>
+                        <div class="noticia-content">
+                            <h3 class="noticia-titulo">Título de la noticia 1</h3>
+                            <p class="noticia-resumen">Breve resumen de la noticia 1. Este es un párrafo corto que describe los puntos principales de la noticia.</p>
+                            <a href="#" class="btn-ver-mas">Ver más</a>
+                        </div>
+                    </article>
+
+                    <article class="noticia-card">
+                        <div class="noticia-imagen-container">
+                            <img src="../ITESIL/img/carreras/Agronomía.webp" alt="Título de la noticia 1" class="noticia-imagen">
+                        </div>
+                        <div class="noticia-content">
+                            <h3 class="noticia-titulo">Título de la noticia 1</h3>
+                            <p class="noticia-resumen">Breve resumen de la noticia 1. Este es un párrafo corto que describe los puntos principales de la noticia.</p>
+                            <a href="#" class="btn-ver-mas">Ver más</a>
+                        </div>
+                    </article>
+
+                    <article class="noticia-card">
+                        <div class="noticia-imagen-container">
+                            <img src="../ITESIL/img/carreras/Agronomía.webp" alt="Título de la noticia 1" class="noticia-imagen">
+                        </div>
+                        <div class="noticia-content">
+                            <h3 class="noticia-titulo">Título de la noticia 1</h3>
+                            <p class="noticia-resumen">Breve resumen de la noticia 1. Este es un párrafo corto que describe los puntos principales de la noticia.</p>
+                            <a href="#" class="btn-ver-mas">Ver más</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================== -->
+        <!--                    Servicios                       -->
+        <!-- ================================================== -->
+
+        <section class="servicios">
+            <div class="container">
+                <h2 class="section-title">Nuestros Servicios</h2>
+                <div class="servicios-container">
+                    <div class="servicio">
+                        <i class="fas fa-book"></i>
+                        <h3>Biblioteca</h3>
+                        <p>Acceso a una amplia colección de recursos académicos y literatura.</p>
+                    </div>
+                    <div class="servicio">
+                        <i class="fas fa-laptop-code"></i>
+                        <h3>Laboratorios de Informática</h3>
+                        <p>Equipos modernos para prácticas y desarrollo de proyectos tecnológicos.</p>
+                    </div>
+                    <div class="servicio">
+                        <i class="fas fa-flask"></i>
+                        <h3>Laboratorios de ciencias</h3>
+                        <p>Instalaciones equipadas para experimentos y prácticas científicas</p>
+                    </div>
+                    <div class="servicio">
+                        <i class="fas fa-users"></i>
+                        <h3>Laboratorios de Informática</h3>
+                        <p>Equipos modernos para prácticas y desarrollo de proyectos tecnológicos.</p>
+                    </div>
+                </div>
+                <div class="servicios-ver-mas">
+                    <a href="#" class="btn-ver-mas">Ver más servicios</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================== -->
+        <!--               Instituciones Amigas                 -->
+        <!-- ================================================== -->
+
+        <section class="instituciones-amigas">
+            <h2 class="section-title">Instituciones Amigas</h2>
+            <div class="container">
+                <div class="instituciones-container">
+                    <a href="#" target="_blank" class="institucion">
+                        <img src="../ITESIL/img/instituciones/Logo Itesil - Transparente.png" alt="Logo Institución 1">
+                    </a>
+                    <a href="#" target="_blank" class="institucion">
+                        <img src="../ITESIL/img/instituciones/Logo Itesil - Transparente.png" alt="Logo Institución 2">
+                    </a>
+                    <a href="#" target="_blank" class="institucion">
+                        <img src="../ITESIL/img/instituciones/Logo Itesil - Transparente.png" alt="Logo Institución 3">
+                    </a>
+                    <a href="#" target="_blank" class="institucion">
+                        <img src="../ITESIL/img/instituciones/Logo Itesil - Transparente.png" alt="Logo Institución 4">
+                    </a>
+                    <a href="#" target="_blank" class="institucion">
+                        <img src="../ITESIL/img/instituciones/Logo Itesil - Transparente.png" alt="Logo Institución 5">
+                    </a>
+                    <a href="#" target="_blank" class="institucion">
+                        <img src="../ITESIL/img/instituciones/Logo Itesil - Transparente.png" alt="Logo Institución 6">
+                    </a>
+                    <a href="#" target="_blank" class="institucion">
+                        <img src="../ITESIL/img/instituciones/Logo Itesil - Transparente.png" alt="Logo Institución 7">
+                    </a>
+                    <a href="#" target="_blank" class="institucion">
+                        <img src="../ITESIL/img/instituciones/Logo Itesil - Transparente.png" alt="Logo Institución 8">
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content container">
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <p><i class="fas fa-map-market-alt"></i> C/Duarte No. 70 Dajabón, República Dominicana</p>
+                <p><i class="fas fa-phone"></i> +1(809)579-8229</p>
+                <p><i class="fas fa-envelope"> itesil@itesil.org</i></p>
+            </div>
+            <div class="footer-section">
+                <h3>Enlaces rápidos</h3>
+                <ul>
+                    <li><a href="../ITESIL/index.html">Inicio</a></li>
+                    <li><a href="../ITESIL/pag/Sobre_Nosotros.html">Sobre Nosotros</a></li>
+                    <li><a href="../ITESIL/pag/Academico.html">Académicos</a></li>
+                    <li><a href="../ITESIL/pag/Aula_virtual.html">Aula Virtual</a></li>
+                    <li><a href="../ITESIL/pag/Novedades.html">Novedades</a></li>
+                    <li><a href="../ITESIL/pag/Contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Síguenos</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/itesilrd?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2024 Instituto Tecnológico San Ignacio de Loyola. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../ITESIL/js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let indiceActual = 0;
+            const imagenPrincipal = document.getElementById('imagen-principal');
+            const nombreCarrera = document.getElementById('nombre-carrera');
+            const definicionCarrera = document.getElementById('definicion-carrera');
+            const controles = document.querySelectorAll('.preview-control');
+            let intervalo;
+
+            function actualizarContenido(index) {
+                const controlActual = controles[index];
+                const imagenPreview = controlActual.querySelector('img');
+
+                // Aplicar animaciones de salida
+                imagenPrincipal.classList.add('slide-out');
+                nombreCarrera.classList.add('fade-out');
+                definicionCarrera.classList.add('fade-out');
+
+                setTimeout(() => {
+                    // Actualizar contenido
+                    imagenPrincipal.src = imagenPreview.src;
+                    imagenPrincipal.alt = imagenPreview.alt;
+                    nombreCarrera.textContent = imagenPreview.dataset.nombre;
+                    definicionCarrera.textContent = imagenPreview.dataset.definicion;
+
+                    // Aplicar animaciones de entrada
+                    imagenPrincipal.classList.remove('slide-out');
+                    imagenPrincipal.classList.add('slide-in');
+                    nombreCarrera.classList.remove('fade-out');
+                    nombreCarrera.classList.add('fade-in');
+                    definicionCarrera.classList.remove('fade-out');
+                    definicionCarrera.classList.add('fade-in');
+
+                    // Actualizar controles
+                    controles.forEach((control, i) => {
+                        const imagen = control.querySelector('img');
+                        const barra = control.querySelector('.barra');
+                        imagen.classList.toggle('activa', i === index);
+                        barra.classList.toggle('activa', i === index);
+                        barra.querySelector('.progreso').style.width = '0';
+                    });
+
+                    // Reiniciar la animación de la barra activa
+                    void controles[index].querySelector('.barra').offsetWidth; // Forzar un reflow
+                    controles[index].querySelector('.barra .progreso').style.width = '100%';
+
+                    // Eliminar clases de animación después de completarse
+                    setTimeout(() => {
+                        imagenPrincipal.classList.remove('slide-in');
+                        nombreCarrera.classList.remove('fade-in');
+                        definicionCarrera.classList.remove('fade-in');
+                    }, 500);
+                }, 500); // Esperar a que termine la animación de salida
+            }
+
+            function siguienteImagen() {
+                indiceActual = (indiceActual + 1) % controles.length;
+                actualizarContenido(indiceActual);
+            }
+
+            function iniciarIntervalo() {
+                clearInterval(intervalo);
+                intervalo = setInterval(siguienteImagen, 5000);
+            }
+
+            controles.forEach((control, index) => {
+                control.addEventListener('click', () => {
+                    indiceActual = index;
+                    actualizarContenido(indiceActual);
+                    iniciarIntervalo();
+                });
+            });
+
+            // Iniciar el carrusel
+            actualizarContenido(indiceActual);
+            iniciarIntervalo();
+        });
+    </script>
+    </script>
+</body>
+</html>
