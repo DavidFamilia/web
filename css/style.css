@@ -97,7 +97,7 @@ body {
 /* ==================================================== */
 
 .hero {
-    background-image: url(/img/fondo.webp);
+    background-image: url(img/fondo.webp);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
