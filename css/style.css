@@ -216,17 +216,16 @@ body {
 
 .grafico-titulo {
     text-align: center;
-    justify-content: center;
     color: var(--primary-color);
-    margin-bottom: 20px;
-    font-size: 24px;
+    margin-bottom: 30px;
+    font-size: 28px;
 }
 
 .graficos-container {
     display: flex;
     justify-content: center;
-    align-items: start;
-    flex-wrap: wrap;
+    align-items: center;
+    flex-direction: column;
     max-width: 1200px;
     margin: 50px auto;
     padding: 20px;
@@ -235,21 +234,19 @@ body {
 
 .grafico-content {
     width: 100%;
-    max-width: 500px;
     text-align: center;
-    margin: 0 20px 40px;
 }
 
-.grafico-content h2 {
-    color: var(--primary-color);
-    margin-bottom: 20px;
-    font-size: 24px;
+.graficos-wrapper {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
-#genderChart, #careerChart {
+.grafico-item {
     width: 100%;
-    height: auto;
-    max-width: 400px;
+    max-width: 500px;
 }
 
 /* ==================================================== */
